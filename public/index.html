@@ -10,15 +10,17 @@
     <title>Blad & Bloei - Taalmodel</title>
 </head>
 <body>
-    <!-- Lege chat container -->
-    <div class="chat"></div>
+<div class="header">
+    🌿 Blad & Bloei
+</div>
 
-    <!-- Form onderaan -->
-    <form class="form" action="/api/chat" method="POST">
-        <label for="prompt"></label>
-        <input type="text" name="prompt" id="prompt" placeholder="Typ je bericht..." required />
+<div class="chat"></div>
 
-        <button type="submit">Verstuur</button>
-    </form>
+<form class="form" action="/api/chat" method="POST">
+    <label for="prompt"></label>
+    <input type="text" name="prompt" id="prompt" placeholder="Vraag iets over je tuin..." required />
+    <button type="submit">Verstuur</button>
+</form>
+
 </body>
 </html>

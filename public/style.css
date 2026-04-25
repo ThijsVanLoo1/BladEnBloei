@@ -2,104 +2,118 @@
     box-sizing: border-box;
 }
 
+:root {
+    --green-main: #3a7d44;
+    --green-soft: #e6f4ea;
+    --green-accent: #6bbf59;
+    --earth: #8b5e3c;
+    --bg: #f3f7f2;
+    --white: #ffffff;
+    --shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
 body {
     margin: 0;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: #f5f7fb;
+    font-family: "Segoe UI", Roboto, sans-serif;
+    background: linear-gradient(180deg, #eef5ec, #f7faf7);
 }
 
+.header {
+    padding: 14px 20px;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--green-main);
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* Chat container */
 .chat {
     flex: 1;
-    padding: 20px;
+    padding: 24px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 14px;
 }
 
-/* Basis bubble */
+/* Bubble base */
 .bubble {
     max-width: 70%;
-    padding: 12px 16px;
-    border-radius: 18px;
+    padding: 14px 18px;
+    border-radius: 20px;
     font-size: 15px;
-    line-height: 1.4;
+    line-height: 1.5;
     display: inline-block;
     word-wrap: break-word;
+    box-shadow: var(--shadow);
+    animation: fadeIn 0.25s ease;
 }
 
-/* User message (rechts, blauw) */
+/* User */
 .user {
     align-self: flex-end;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, var(--green-main), var(--green-accent));
     color: white;
     border-bottom-right-radius: 6px;
 }
 
-/* Bot message (links, grijs) */
+/* Bot */
 .bot {
     align-self: flex-start;
-    background: #e5e7eb;
-    color: #111;
+    background: var(--white);
+    color: #1f2937;
     border-bottom-left-radius: 6px;
+    border: 1px solid #e5e7eb;
 }
 
-/* Subtiele fade-in animatie voor nieuwe berichten */
-.bubble {
-    animation: fadeIn 0.2s ease;
-}
-
+/* Tokens */
 .tokens {
     text-align: end;
-    font-size: small;
-    font-weight: bold;
+    font-size: 11px;
+    margin-top: 6px;
+    opacity: 0.6;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(5px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Input area altijd onderaan */
+/* Input area */
 .form {
     position: sticky;
     bottom: 0;
     display: flex;
     gap: 10px;
-    padding: 15px;
-    background: white;
-    border-top: 1px solid #ddd;
+    padding: 14px;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid #e5e7eb;
 }
 
 /* Input */
 input {
     flex: 1;
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
+    padding: 13px 14px;
+    border-radius: 12px;
+    border: 1px solid #d1d5db;
     font-size: 15px;
     outline: none;
+    transition: 0.2s;
+    background: #fff;
 }
 
 input:focus {
-    border-color: #667eea;
+    border-color: var(--green-main);
+    box-shadow: 0 0 0 2px rgba(58,125,68,0.15);
 }
 
 /* Button */
 button {
     padding: 12px 18px;
     border: none;
-    border-radius: 10px;
-    background: #667eea;
+    border-radius: 12px;
+    background: var(--green-main);
     color: white;
     cursor: pointer;
     font-size: 15px;
@@ -107,5 +121,35 @@ button {
 }
 
 button:hover {
-    background: #5a67d8;
+    background: #2f6a38;
+    transform: translateY(-1px);
+}
+
+button:disabled {
+    background: #a7c4a0;
+    cursor: not-allowed;
+    transform: none;
+    opacity: 0.7;
+}
+
+/* Animatie */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scrollbar (extra detail 👇) */
+.chat::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat::-webkit-scrollbar-thumb {
+    background: #c7d7c4;
+    border-radius: 10px;
 }
